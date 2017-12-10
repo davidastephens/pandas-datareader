@@ -21,7 +21,7 @@ class TestYahoo(object):
     def setup_class(cls):
         pytest.importorskip("lxml")
 
-    @skip_on_exception(RemoteDataError)
+    @pytest.mark.skip(reason="Yahoo quotes API is offline as of Dec 10, 2017")
     def test_yahoo(self):
         # Asserts that yahoo is minimally working
         start = datetime(2010, 1, 1)
@@ -29,6 +29,7 @@ class TestYahoo(object):
 
         assert web.DataReader('F', 'yahoo', start, end)['Close'][-1] == 13.68
 
+    @pytest.mark.skip(reason="Yahoo quotes API is offline as of Dec 10, 2017")
     def test_yahoo_fails(self):
         start = datetime(2010, 1, 1)
         end = datetime(2013, 1, 27)
@@ -36,19 +37,23 @@ class TestYahoo(object):
         with pytest.raises(Exception):
             web.DataReader('NON EXISTENT TICKER', 'yahoo', start, end)
 
+    @pytest.mark.skip(reason="Yahoo quotes API is offline as of Dec 10, 2017")
     def test_get_quote_series(self):
         df = web.get_quote_yahoo(pd.Series(['GOOG', 'AAPL', 'GOOG']))
         tm.assert_series_equal(df.iloc[0], df.iloc[2])
 
+    @pytest.mark.skip(reason="Yahoo quotes API is offline as of Dec 10, 2017")
     def test_get_quote_string(self):
         _yahoo_codes.update({'MarketCap': 'j1'})
         df = web.get_quote_yahoo('GOOG')
         assert not pd.isnull(df['MarketCap'][0])
 
+    @pytest.mark.skip(reason="Yahoo quotes API is offline as of Dec 10, 2017")
     def test_get_quote_stringlist(self):
         df = web.get_quote_yahoo(['GOOG', 'AAPL', 'GOOG'])
         tm.assert_series_equal(df.iloc[0], df.iloc[2])
 
+    @pytest.mark.skip(reason="Yahoo quotes API is offline as of Dec 10, 2017")
     def test_get_quote_comma_name(self):
         _yahoo_codes.update({'name': 'n'})
         df = web.get_quote_yahoo(['RGLD'])

@@ -82,6 +82,8 @@ Yahoo! Finance Quotes
 ---------------------
 ***Experimental***
 
+OFFLINE AS OF DEC 10, 2017
+
 The YahooQuotesReader class allows to get quotes data from Yahoo! Finance.
 
 .. ipython:: python
