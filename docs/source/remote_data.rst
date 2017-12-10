@@ -184,6 +184,8 @@ Google Finance Options
 ----------------------
 ***Experimental***
 
+OFFLINE AS OF DEC 10, 2017
+
 The Options class allows the download of options data from Google Finance.
 
 The ``get_options_data`` method downloads options data for specified expiry date
